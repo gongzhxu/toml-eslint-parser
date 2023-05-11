@@ -2,35 +2,24 @@
   "name": "toml-eslint-parser",
   "version": "0.6.0",
   "description": "A TOML parser that produces output compatible with ESLint",
-  "main": "lib/index.js",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
-    "lib"
+    "dist"
   ],
   "engines": {
     "node": "^12.22.0 || ^14.17.0 || >=16.0.0"
   },
   "scripts": {
-    "setup": "git submodule update --init",
-    "prebuild": "npm run -s clean",
-    "build": "npm run build:meta && npm run build:tsc",
-    "build:meta": "ts-node --transpile-only ./tools/update-meta.ts",
-    "build:tsc": "tsc --project ./tsconfig.build.json",
-    "clean": "rimraf .nyc_output lib coverage",
-    "lint": "eslint . --ext .js,.ts,.json",
-    "eslint-fix": "npm run lint -- --fix",
-    "test": "env-cmd -e tz mocha --require ts-node/register \"tests/src/**/*.ts\" --reporter dot --timeout 60000",
-    "cover": "nyc --reporter=lcov npm run test",
-    "debug": "env-cmd -e tz mocha --require ts-node/register/transpile-only --inspect \"tests/src/**/*.ts\" --reporter dot",
-    "preversion": "npm run lint && npm test",
-    "update-fixtures": "env-cmd -e tz ts-node --transpile-only ./tools/update-fixtures.ts",
-    "benchmark": "ts-node --transpile-only benchmark/index.ts",
-    "prerelease": "npm run clean && npm run build",
-    "release": "changeset publish",
-    "version:ci": "env-cmd -e version-ci npm run build:meta && changeset version"
+    "build": "rm -rf dist && tsc",
+    "lint": "eslint . --ext .js,.ts,.json"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ota-meshi/toml-eslint-parser.git"
+    "url": "git+https://github.com/gongzhxu/toml-eslint-parser.git"
   },
   "keywords": [
     "toml",
@@ -38,13 +27,13 @@
     "parser",
     "ast"
   ],
-  "author": "Yosuke Ota",
-  "funding": "https://github.com/sponsors/ota-meshi",
+  "author": "gongzhxu",
+  "funding": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ota-meshi/toml-eslint-parser/issues"
+    "url": "https://github.com/gongzhxu/toml-eslint-parser/issues"
   },
-  "homepage": "https://github.com/ota-meshi/toml-eslint-parser#readme",
+  "homepage": "https://github.com/gongzhxu/toml-eslint-parser#readme",
   "dependencies": {
     "eslint-visitor-keys": "^3.0.0"
   },

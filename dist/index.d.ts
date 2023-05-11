@@ -2,30 +2,16 @@ import { parseForESLint } from "./parser";
 import type * as AST from "./ast";
 import { traverseNodes } from "./traverse";
 import { getStaticTOMLValue } from "./utils";
-import { KEYS } from "./visitor-keys";
 import { ParseError } from "./errors";
 import type { ParserOptions } from "./parser-options";
 export * as meta from "./meta";
 export { name } from "./meta";
 export type * as AST from "./ast";
-
 export { ParseError };
-
-// parser
 export { parseForESLint };
-// Keys
-// eslint-disable-next-line @typescript-eslint/naming-convention -- ignore
-export const VisitorKeys = KEYS;
-
-// tools
+export declare const VisitorKeys: import("eslint").SourceCode.VisitorKeys;
 export { traverseNodes, getStaticTOMLValue };
-
 /**
  * Parse TOML source code
  */
-export function parseTOML(
-  code: string,
-  options?: ParserOptions
-): AST.TOMLProgram {
-  return parseForESLint(code, options).ast;
-}
+export declare function parseTOML(code: string, options?: ParserOptions): AST.TOMLProgram;

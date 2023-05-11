@@ -145,7 +145,6 @@ type DateTimeData = {
 export class Tokenizer {
   public readonly text: string;
 
-  // @ts-expect-error -- unused
   private readonly parserOptions: ParserOptions;
 
   private readonly codePointIterator: CodePointIterator;
